@@ -20,25 +20,25 @@ body {
 }
 
 .logo-font {
-    text-transform: uppercase;
+    text-transform: uppercase; /* Change */
 }
 
 .main-logo-link {
-    width: fit-content;
+    width: fit-content; /* Logo only takes up as much space as text */
 }
 
-.shop-now-button {
+.shop-now-button { /* Change */
     background: black;
     color: white;
     min-width: 260px;
 }
 
-.btn-black {
+.btn-black { /* Change */
     background: black;
     color: white;
 }
 
-.shop-now-button:hover,
+.shop-now-button:hover, /* Change */
 .shop-now-button:active,
 .shop-now-button:focus,
 .btn-black:hover,
@@ -48,12 +48,20 @@ body {
     color: white;
 }
 
-.text-black {
+.text-black { /* Create new classes if desired */
     color: #000 !important;
+}
+
+.border-black { /* Create new classes if desired */
+    border: 1px solid black !important;
 }
 
 .border-black {
     border: 1px solid black !important;
+}
+
+.bg-black {
+    background: #000 !important;
 }
 
 /* -------------------------------- Media Queries */
