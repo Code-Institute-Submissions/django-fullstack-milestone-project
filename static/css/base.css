@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Tangerine:400,700&display=swap');
+
 html {
     height: 100%;
 }
 
 body {
-    background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed; /*Change image address for own image */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url('/media/home-img.jpg') no-repeat center center fixed; /*Change image address for own image */
     background-size: cover;
     height: calc(100vh - 164px); /* height of top header is 164px */
     color: #555; /* Change */
@@ -20,21 +22,69 @@ body {
 }
 
 .logo-font {
-    text-transform: uppercase; /* Change */
+    font-family: 'Tangerine', cursive;
+}
+
+.logo-style {
+    vertical-align: middle;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 0px;
+    margin-left: 7px;
+    font-size: 34px;
+    padding: 0;
+    line-height: 30px;
+    letter-spacing: 0px;
+    font-weight: 400;
+    text-shadow: 1px 1px 3px black;
+}
+
+.logo-bigger{
+    font-size: 37px !important;
+}
+
+.bg-dk-green{
+    background-color: rgb(24, 48, 22);
+}
+
+.text-biege { /* Create new classes if desired */
+    color: #f1d578e8 !important;
+}
+
+.dropdown-colors{
+    background-color: #f1d578e8;
+    color: rgb(24, 48, 22) !important;
 }
 
 .main-logo-link {
     width: fit-content; /* Logo only takes up as much space as text */
 }
 
+.search-colors{
+    background-color: #ccb053 !important;
+    color: rgba(24, 48, 22, 0.747) !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(24, 48, 22, 0.747) !important;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgba(24, 48, 22, 0.747) !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: rgba(24, 48, 22, 0.747) !important;
+}
+
 .shop-now-button { /* Change */
-    background: black;
+    background: rgb(30, 54, 28);
     color: white;
     min-width: 260px;
 }
 
-.btn-black { /* Change */
-    background: black;
+.btn-green { /* Change */
+    background: rgb(30, 54, 28);
     color: white;
 }
 
@@ -44,12 +94,16 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
-    color: white;
+    background: rgb(44, 80, 41);
+    color: #f1d578e8;
 }
 
 .text-black { /* Create new classes if desired */
     color: #000 !important;
+}
+
+.text-green { /* Create new classes if desired */
+    color: rgb(30, 54, 28);
 }
 
 .border-black { /* Create new classes if desired */
@@ -64,6 +118,29 @@ body {
     background: #000 !important;
 }
 
+.bg-off-white {
+    background: #f1d578ab !important;
+}
+
+.delivery-text-size {
+    font-size: 30px !important;
+    font-weight: 700;
+}
+
+.homepage-line{
+    color: white;
+    vertical-align: middle;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 0px;
+    margin-left: 7px;
+    font-size: 50px;
+    padding: 0;
+    line-height: 30px;
+    letter-spacing: 0px;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px black;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
