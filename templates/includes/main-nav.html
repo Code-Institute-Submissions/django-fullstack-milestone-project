@@ -7,8 +7,8 @@
             <div class="dropdown-colors dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}" class="dropdown-colors dropdown-item">All Products</a>
                 <a href="" class="dropdown-colors dropdown-item ">By Price</a>
-                <a href="" class="dropdown-colors dropdown-item ">Gold</a>
-                <a href="" class="dropdown-colors dropdown-item">Silver</a>
+                <a href="{% url 'products' %}?metal=gold" class="dropdown-colors dropdown-item ">Gold</a>
+                <a href="{% url 'products' %}?metal=silver" class="dropdown-colors dropdown-item">Silver</a>
             </div>
         </li>
 
@@ -17,11 +17,11 @@
                 Themes
             </a>
             <div class="dropdown-colors dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-colors dropdown-item">Nature</a>
-                <a href="" class="dropdown-colors dropdown-item">Science</a>
-                <a href="" class="dropdown-colors dropdown-item">Art</a>
-                <a href="" class="dropdown-colors dropdown-item">Music</a>
-                <a href="" class="dropdown-colors dropdown-item">People</a>
+                <a href="{% url 'products' %}?theme=nature" class="dropdown-colors dropdown-item">Nature</a>
+                <a href="{% url 'products' %}?theme=science" class="dropdown-colors dropdown-item">Science</a>
+                <a href="{% url 'products' %}?theme=art" class="dropdown-colors dropdown-item">Art</a>
+                <a href="{% url 'products' %}?theme=music" class="dropdown-colors dropdown-item">Music</a>
+                <a href="{% url 'products' %}?theme=people" class="dropdown-colors dropdown-item">People</a>
             </div>
         </li>
 
@@ -30,13 +30,13 @@
                 Category
             </a>
             <div class="dropdown-colors dropdown-menu border-0" aria-labelledby="homeware-link">
-                <a href="" class="dropdown-colors dropdown-item">Rings</a>
-                <a href="" class="dropdown-colors dropdown-item">Necklaces</a>
-                <a href="" class="dropdown-colors dropdown-item">Bracelets</a>
-                <a href="" class="dropdown-colors dropdown-item">Earrings</a>
-                <a href="" class="dropdown-colors dropdown-item">Cufflinks</a>
-                <a href="" class="dropdown-colors dropdown-item">Tie Bars</a>
-                <a href="" class="dropdown-colors dropdown-item">Brooches</a>
+                <a href="{% url 'products' %}?category=rings" class="dropdown-colors dropdown-item">Rings</a>
+                <a href="{% url 'products' %}?category=necklaces" class="dropdown-colors dropdown-item">Necklaces</a>
+                <a href="{% url 'products' %}?category=bracelets" class="dropdown-colors dropdown-item">Bracelets</a>
+                <a href="{% url 'products' %}?category=earrings" class="dropdown-colors dropdown-item">Earrings</a>
+                <a href="{% url 'products' %}?category=cufflinks" class="dropdown-colors dropdown-item">Cufflinks</a>
+                <a href="{% url 'products' %}?category=tie-bars" class="dropdown-colors dropdown-item">Tie Bars</a>
+                <a href="{% url 'products' %}?category=brooches" class="dropdown-colors dropdown-item">Brooches</a>
             </div>
         </li>
 
