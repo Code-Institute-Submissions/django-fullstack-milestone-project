@@ -141,6 +141,30 @@ body {
     font-weight: 700;
     text-shadow: 2px 2px 5px black;
 }
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
+}
+
+.img-fluid {
+    max-width: 200px !important;
+    max-height: 200px !important;
+}
+
+.card-img, .card-img-bottom, .card-img-top {
+    width: auto;
+}
+
+.img-frame{
+    height: 200px !important;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -162,5 +186,16 @@ body {
 
     .header-container {
         padding-top: 164px;
+    }
+}
+
+/* pad the top a bit when navbar is collapsed on mobile */
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 116px;
+    }
+
+    body {
+        height: calc(100vh - 116px);
     }
 }
