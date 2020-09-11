@@ -6,7 +6,7 @@
             </a>
             <div class="dropdown-colors dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}" class="dropdown-colors dropdown-item">All Products</a>
-                <a href="" class="dropdown-colors dropdown-item ">By Price</a>
+                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-colors dropdown-item ">By Price</a>
                 <a href="{% url 'products' %}?metal=gold" class="dropdown-colors dropdown-item ">Gold</a>
                 <a href="{% url 'products' %}?metal=silver" class="dropdown-colors dropdown-item">Silver</a>
             </div>
