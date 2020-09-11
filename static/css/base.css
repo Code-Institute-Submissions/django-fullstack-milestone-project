@@ -181,6 +181,19 @@ body {
     border-color: rgb(24, 48, 22) !important;
 }
 
+.btn-outline-black { /* Change */
+    background: white;
+    color: black !important; /* use important to override link colors for <a> elements */
+    border: 1px solid black;
+}
+
+.btn-outline-black:hover, /* Change */
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: black;
+    color: white !important;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
