@@ -10,7 +10,7 @@ class OrderForm(forms.ModelForm):
                   'town_or_city', 'postcode', 'country',
                   'county',)
 
-    country = forms.CharField(max_length=2, min_length=2, required=True)
+    #country = forms.CharField(max_length=2, min_length=2, required=True)
 
     def __init__(self, *args, **kwargs):
         """
