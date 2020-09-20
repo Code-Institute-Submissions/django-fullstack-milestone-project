@@ -2,6 +2,9 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
+from .models import Bonus
+
+import datetime
 
 
 def bag_contents(request):
@@ -33,12 +36,27 @@ def bag_contents(request):
                     'size': size,
                 })
 
-    if total < settings.FREE_DELIVERY_THRESHOLD:
+    # In contexts.py when you calculate the grand total
+
+    now = datetime.datetime.now().date()
+    free_delivery_discount = Bonus.objects.filter(
+        name="FREE_DELIVERY_THRESHOLD",
+        expires_on__gte=now,
+        is_active=True).first()
+
+    if not free_delivery_discount:
+        # Discount doesn't exist, calculate normally
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
-        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
+        free_delivery_delta = None
     else:
-        delivery = 0
-        free_delivery_delta = 0
+        if total < free_delivery_discount.amount:
+            # Discount exists, but user has to pay more to qualify
+            delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+            free_delivery_delta = free_delivery_discount.amount - total
+        else:
+            # Discount exists, user is above threshold
+            delivery = 0
+            free_delivery_delta = 0
 
     grand_total = delivery + total
 
@@ -48,7 +66,7 @@ def bag_contents(request):
         'product_count': product_count,
         'delivery': delivery,
         'free_delivery_delta': free_delivery_delta,
-        'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
+        'free_delivery_threshold': free_delivery_discount.amount,
         'grand_total': grand_total,
     }
 
