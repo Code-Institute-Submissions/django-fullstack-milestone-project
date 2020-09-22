@@ -3,8 +3,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Product, Category, Theme, Metal
-from .forms import ProductForm
+from .models import Product, Category, Theme, Metal, Review
+from profiles.models import UserProfile
+from .forms import ProductForm, ReviewForm
 # Create your views here.
 
 
@@ -76,8 +77,11 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
 
+    reviews = product.reviews.all()
+
     context = {
         'product': product,
+        'reviews': reviews
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -149,3 +153,45 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+def review_product(request, product_id):
+    """ Add a review to the product_detail page """
+    product = get_object_or_404(Product, pk=product_id)
+    profile = UserProfile.objects.get(user=request.user)
+    if request.method == 'POST':
+
+        if request.user.is_authenticated:
+            try:
+                form_data = {
+                    'user': profile,
+                    'product': product,
+                    'rating': request.POST['rating'],
+                    'description': request.POST['description'],
+                    'visible': True
+                }
+                review_form = ReviewForm(form_data)
+                if review_form.is_valid():
+                    review_form.save()
+                    messages.success(request, 'Successfully reviewed this product!')
+                    return redirect(reverse('product_detail', args=[product.id]))
+                else:
+                    messages.error(request, f'Failed to review {product.name}. Please ensure the form is valid.')
+
+            except UserProfile.DoesNotExist:
+                review_form = ReviewForm()
+        else:
+            messages.error(request, f'Please Login to review {product.name}')
+            return redirect(reverse('product'))
+
+    else:
+        review_form = ReviewForm()
+
+    template = 'products/review_product.html'
+    context = {
+        'review_form': review_form,
+        'product': product,
+        'user': profile,
+    }
+
+    return render(request, template, context)

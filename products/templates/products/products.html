@@ -82,10 +82,15 @@
                                                 </a>
                                             </p>
                                             {% endif %}
-                                            {% if request.user.is_superuser %}
+                                            {% if request.user.is_authenticated %}
+                                                {% if request.user.is_superuser %}
+                                                    <small class="ml-3">
+                                                        <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                                                        <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                    </small>
+                                                {% endif %}
                                                 <small class="ml-3">
-                                                    <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                                                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                    <a href="{% url 'review_product' product.id %}">Review</a>
                                                 </small>
                                             {% endif %}
                                         </div>

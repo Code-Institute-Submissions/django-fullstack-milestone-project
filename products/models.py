@@ -1,4 +1,7 @@
+import uuid
 from django.db import models
+from profiles.models import UserProfile
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Category(models.Model):
@@ -38,6 +41,17 @@ class Theme(models.Model):
         return self.friendly_name
 
 
+class Rating(models.Model):
+    name = models.CharField(max_length=2, null=True)
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+
+    def __str__(self):
+        return self.name
+
+    def get_rating(self):
+        return self.rating
+
+
 class Product(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     metal = models.ForeignKey('Metal', null=True, blank=True, on_delete=models.SET_NULL)
@@ -52,3 +66,31 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Review(models.Model):
+    review_number = models.CharField(max_length=32, null=True, editable=False)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='reviews')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    description = models.CharField(max_length=512)
+    rating = models.ForeignKey(Rating, on_delete=models.CASCADE, related_name='reviews')
+    created_at = models.DateTimeField(auto_now_add=True)
+    visible = models.BooleanField(default=True, null=True, blank=True)
+
+    def _generate_review_number(self):
+        """
+        Generate a random, unique order number using UUID
+        """
+        return uuid.uuid4().hex.upper()
+
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the order number
+        if it hasn't been set already.
+        """
+        if not self.review_number:
+            self.review_number = self._generate_review_number()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.review_number
