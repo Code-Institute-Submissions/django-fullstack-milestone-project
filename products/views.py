@@ -195,3 +195,48 @@ def review_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def edit_review(request, review_id):
+    """ Edit a review """
+    review = get_object_or_404(Review, pk=review_id)
+    product = review.product
+    if not request.user == review.user.user:
+        messages.error(request, 'Sorry, only the user who wrote the review can do that.')
+        return redirect(reverse('product_detail', args=[product.id]))
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated review!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update review. Please ensure the form is valid.')
+    else:
+        form = ReviewForm(instance=review)
+        messages.info(request, f'You are editing you review for {product.name}')
+
+    template = 'products/edit_review.html'
+    context = {
+        'form': form,
+        'product': product,
+        'review': review
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_review(request, review_id):
+    """ Delete a product from the store """
+    review = get_object_or_404(Review, pk=review_id)
+    product = review.product
+    if not request.user == review.user.user:
+        messages.error(request, 'Sorry, only the user who wrote the review can do that.')
+        return redirect(reverse('product_detail', args=[product.id]))
+
+    review.delete()
+    messages.success(request, 'Review deleted!')
+    return redirect(reverse('product_detail', args=[product.id]))

@@ -39,7 +39,7 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = (
-            'user', 'product', 'rating',
+            'rating',
             'description'
             )
 
@@ -50,8 +50,6 @@ class ReviewForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'user': 'Username',
-            'product': 'Product',
             'rating': 'Rating',
             'description': 'Review',
         }

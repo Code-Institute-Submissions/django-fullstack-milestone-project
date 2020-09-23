@@ -131,8 +131,15 @@
          <div class="row">
             <div class="col-12 col-md-6">
             {% for review in reviews %}
-                <p class="mb-0">{{ review.user}}</p>
+                <p class="mb-0">{{ review.user.user}}</p>
                 <p class="mb-0">{{ review.product}}</p>
+                <p class="mb-0">{{ user.user}}</p>
+                {% if request.user == review.user.user %}
+                    <small class="ml-3">
+                        <a href="{% url 'edit_review' review.id %}">Edit</a> | 
+                        <a class="text-danger" href="{% url 'delete_review' review.id %}">Delete</a>
+                    </small>
+                {% endif %}
                 <p class="mb-0">{{ review.rating}}</p>
                 <p class="mb-0">{{ review.description}}</p>
                 <p class="mb-0">{{ review.created_at}}</p>
