@@ -51,6 +51,10 @@ body {
     color: #f1d578e8 !important;
 }
 
+.shadow-text {
+    text-shadow: 1px 1px 3px black !important;
+}
+
 .dropdown-colors{
     background-color: #f1d578e8;
     color: rgb(24, 48, 22) !important;
