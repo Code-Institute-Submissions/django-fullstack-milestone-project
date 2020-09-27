@@ -48,7 +48,7 @@ body {
 }
 
 .text-biege { /* Create new classes if desired */
-    color: #f1d578e8 !important;
+    color: rgba(241, 213, 120, 0.91) !important;
 }
 
 .shadow-text {
@@ -418,6 +418,15 @@ body {
         padding-top: 164px;
     }
 }
+
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(241, 213, 120, 0.91)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+.navbar-toggler {
+  border: none !important;
+} 
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
