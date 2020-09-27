@@ -82,8 +82,8 @@ body {
 }
 
 .shop-now-button { /* Change */
-    background: rgb(30, 54, 28);
-    color: white;
+    background: rgb(30, 54, 28) !important;
+    color: #f1d578e8 !important;
     min-width: 260px;
 }
 
@@ -92,14 +92,19 @@ body {
     color: white;
 }
 
+.default-button { /* Change */
+    background: rgb(30, 54, 28) !important;
+    color: #f1d578e8 !important;
+}
+
 .shop-now-button:hover, /* Change */
 .shop-now-button:active,
 .shop-now-button:focus,
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: rgb(44, 80, 41);
-    color: #f1d578e8;
+    background: rgb(30, 54, 28) !important;
+    color: white !important;
 }
 
 .text-black { /* Create new classes if desired */
@@ -140,7 +145,6 @@ body {
     margin-left: 7px;
     font-size: 50px;
     padding: 0;
-    line-height: 30px;
     letter-spacing: 0px;
     font-weight: 700;
     text-shadow: 2px 2px 5px black;
@@ -196,8 +200,44 @@ body {
 .btn-outline-black:hover, /* Change */
 .btn-outline-black:active,
 .btn-outline-black:focus {
-    background: black;
+    background: rgb(27, 94, 21);
     color: white !important;
+}
+
+.review-heading{
+    width: 100%;
+}
+
+.review-div{
+    display:inline-block;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.review-user{
+    margin-left: 0;
+    font-weight: 700;
+}
+
+.review-rating{
+    margin-left: 20px;
+}
+
+.review-date{
+    margin-left: 20px;
+}
+
+.star-icon {
+    color: rgb(24, 48, 22) !important;
+}
+
+.review-description{
+    margin-top: 20px;
+}
+
+.review-hr{
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 /* ------------------------------- bootstrap toasts */
