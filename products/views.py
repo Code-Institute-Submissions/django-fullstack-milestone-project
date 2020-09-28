@@ -159,6 +159,7 @@ def review_product(request, product_id):
     """ Add a review to the product_detail page """
     product = get_object_or_404(Product, pk=product_id)
     profile = UserProfile.objects.get(user=request.user)
+
     if request.method == 'POST':
 
         if request.user.is_authenticated:
@@ -174,7 +175,8 @@ def review_product(request, product_id):
                 if review_form.is_valid():
                     review_form.save()
                     messages.success(request, 'Successfully reviewed this product!')
-                    return redirect(reverse('product_detail', args=[product.id]))
+                    return redirect(
+                        reverse('product_detail', args=[product.id]))
                 else:
                     messages.error(request, f'Failed to review {product.name}. Please ensure the form is valid.')
 
