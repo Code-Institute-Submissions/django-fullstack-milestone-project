@@ -48,7 +48,9 @@ def bag_contents(request):
         # Discount doesn't exist, calculate normally
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
         free_delivery_delta = None
+        free_delivery_discount_amount = 0
     else:
+        free_delivery_discount_amount = free_delivery_discount.amount
         if total < free_delivery_discount.amount:
             # Discount exists, but user has to pay more to qualify
             delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
@@ -59,8 +61,6 @@ def bag_contents(request):
             free_delivery_delta = 0
 
     grand_total = delivery + total
-
-    free_delivery_discount_amount = free_delivery_discount.amount
 
     context = {
         'bag_items': bag_items,
