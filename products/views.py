@@ -164,17 +164,19 @@ def review_product(request, product_id):
 
         if request.user.is_authenticated:
             try:
-                form_data = {
-                    'user': profile,
-                    'product': product,
-                    'rating': request.POST['rating'],
-                    'description': request.POST['description'],
-                    'visible': True
-                }
-                review_form = ReviewForm(form_data)
+                review_form = ReviewForm(request.POST)
                 if review_form.is_valid():
-                    review_form.save()
+                    Review.objects.create(
+                        **{
+                            'user': profile,
+                            'product': product,
+                            'rating': review_form.cleaned_data['rating'],
+                            'description': review_form.cleaned_data['description'],
+                            'visible': True,
+                            }
+                            )
                     messages.success(request, 'Successfully reviewed this product!')
+
                     return redirect(
                         reverse('product_detail', args=[product.id]))
                 else:
