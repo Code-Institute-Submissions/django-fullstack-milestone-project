@@ -14,9 +14,6 @@ and by metals (gold or silver). The store owner will also have the ability to
 provide discounts to their customers, with assigned expiry dates.
 
 ## UX
-### Layout
-
-
 ### Colour Palette
 Deep green, yellow and white are the primary colours of the site. The white 
 and yellow are representative of gold and silver - the choices of metal in 
