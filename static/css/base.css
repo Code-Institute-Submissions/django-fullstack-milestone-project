@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Tangerine:400,700&display=swap');
-
+/* Code based on code from Code Institute Boutique Ado tutorials */
 html {
     height: 100%;
 }
@@ -7,9 +7,9 @@ html {
 body {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url('/media/home-img.jpg') no-repeat center center fixed; /*Change image address for own image */
     background-size: cover;
-    height: calc(100vh - 164px); /* height of top header is 164px */
-    color: #555; /* Change */
-    font-family: 'Lato'; /* Change */
+    height: calc(100vh - 164px);
+    color: #555;
+    font-family: 'Lato'; 
 }
 
 /* from Bulma */
@@ -191,13 +191,13 @@ body {
     border-color: rgb(24, 48, 22) !important;
 }
 
-.btn-outline-black { /* Change */
+.btn-outline-black {
     background: white;
-    color: black !important; /* use important to override link colors for <a> elements */
+    color: black !important;
     border: 1px solid black;
 }
 
-.btn-outline-black:hover, /* Change */
+.btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus {
     background: rgb(27, 94, 21);
